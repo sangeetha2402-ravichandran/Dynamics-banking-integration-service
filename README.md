@@ -127,7 +127,7 @@ The screenshot below shows the deployed **`gbank-banking-api-san`** App Service 
 - **Region:** Australia East
 - **Deployment:** Successful
 
-![Azure App Service overview](assets/azure-app-service-overview.png)
+![Azure App Service overview](azure-app-service-overview.png)
 
 # 3. Building the Spring Boot Application
 
@@ -520,7 +520,7 @@ Admin consent was granted for the application permission.
 The screenshot below shows the **`gbank-api-client`** application permission configuration.  
 The client application has the **`Api.Access`** application permission for **`gbank-api`**, and admin consent has been granted.
 
-![Microsoft Entra ID API permissions](assets/entra-api-permissions.png)
+![Microsoft Entra ID API permissions](entra-api-permissions.png)
 
 # 16. OAuth 2.0 Client Credentials Flow
 
