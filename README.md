@@ -316,7 +316,7 @@ Provisioning took significantly longer than App Service because APIM creates API
 
 The screenshot below shows the **`gbank-apim-san`** API Management service online in Azure. It also shows the APIM Gateway URL and Developer tier configuration used for this project.
 
-![Azure API Management overview](assets/azure-apim-overview.png)
+![Azure API Management overview](azure-apim-overview.png)
 
 # 9. Importing OpenAPI into APIM
 
