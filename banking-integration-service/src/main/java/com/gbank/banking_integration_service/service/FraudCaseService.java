@@ -11,18 +11,21 @@ import java.util.UUID;
 public class FraudCaseService {
 
     private final FraudCaseRepository fraudCaseRepository;
+    private final FraudMessagePublisher fraudMessagePublisher;
 
-    public FraudCaseService(FraudCaseRepository fraudCaseRepository) {
+    public FraudCaseService(FraudCaseRepository fraudCaseRepository,FraudMessagePublisher fraudMessagePublisher) {
         this.fraudCaseRepository = fraudCaseRepository;
+        this.fraudMessagePublisher = fraudMessagePublisher;
     }
 
     public FraudCase createFraudCase(FraudCase fraudCase) {
 
-        fraudCase.setCaseId("FRAUD-" + UUID.randomUUID().toString().substring(0, 8));
-        fraudCase.setStatus("OPEN");
-        fraudCase.setCreatedDate(LocalDateTime.now());
+        FraudCase savedFraudCase =
+                fraudCaseRepository.save(fraudCase);
 
-        return fraudCaseRepository.save(fraudCase);
+        fraudMessagePublisher.publishFraudCase(savedFraudCase);
+
+        return savedFraudCase;
     }
 
     public FraudCase getFraudCaseById(String caseId) {

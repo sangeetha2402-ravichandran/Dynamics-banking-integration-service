@@ -4,7 +4,7 @@ import com.gbank.banking_integration_service.entity.Transaction;
 import com.gbank.banking_integration_service.service.TransactionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.RequestHeader;
 import java.util.List;
 
 @RestController
@@ -18,8 +18,12 @@ public class TransactionController {
 
     @GetMapping("/api/customers/{customerId}/transactions")
     public ResponseEntity<List<Transaction>> getTransactionsByCustomer(
-            @PathVariable String customerId) {
+            @PathVariable String customerId,@RequestHeader(
+                    value = "x-correlation-id",
+                    required = false
+            ) String correlationId) {
 
+        System.out.println("Correlation ID: " + correlationId);
         return ResponseEntity.ok(
                 transactionService.getTransactionsByCustomerId(customerId)
         );
